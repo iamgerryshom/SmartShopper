@@ -28,9 +28,6 @@ window.addEventListener('scroll', () => {
 
 })
 
-window.addEventListener('load', () => {
-    document.querySelector('body').style.visibility = 'visible';
-});
 
 beginSearch();
 
