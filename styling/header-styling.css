@@ -1,0 +1,30 @@
+header {
+    background-color: transparent;
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 0px 20px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    color: white;
+    
+}
+
+header.scrolling-past-me {
+    background-color: rgba(3, 3, 3, 0.438);
+    backdrop-filter: blur(10px);
+}
+
+.cart-btn {
+    width: 30px;
+    height: 30px;
+}
+
+@media screen and (max-width:600px) {
+    header h3.company-name {
+        font-size: medium;
+    }
+}

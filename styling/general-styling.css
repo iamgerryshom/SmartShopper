@@ -1,0 +1,103 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: rgb(62, 64, 66);
+    margin: 0px;
+    overflow-y: scroll;
+    visibility: collapse;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+input {
+    padding: 10px;
+    font-size: 18px;
+    border: solid;
+    border-radius: 1px;
+    border-color: transparent;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+input:focus {
+    border-color: transparent;
+}
+
+button {
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #ff6600;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    transform-origin: left;
+}
+
+button:hover {
+    transform: scaleX(1.2);
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Center the spinner vertically in the viewport */
+    display: none;
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    background-color: white;
+    border-radius: 50%;
+    animation: wave 1.2s infinite ease-in-out both;
+}
+
+
+
+.first-dot {
+    animation-delay: -0.32s;
+}
+
+.second-dot {
+    animation-delay: -0.16s;
+}
+
+.third-dot {
+    animation-delay: 0s;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    padding-left: 16px;
+    color: wheat;
+}
+
+@keyframes wave {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
