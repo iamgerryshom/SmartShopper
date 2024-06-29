@@ -5,14 +5,15 @@ const errorContainer = document.querySelector('.error-message');
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"
 import { getDatabase, ref, set, get, child, push } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyB-2R-cqvfQU71UByBLYwdqX8-hIZek1Gk",
-  authDomain: "smartshopper-b4c7c.firebaseapp.com",
-  projectId: "smartshopper-b4c7c",
-  storageBucket: "smartshopper-b4c7c.appspot.com",
-  messagingSenderId: "356186768941",
-  appId: "1:356186768941:web:0f5d87abaf4f57e2819aa4",
-  measurementId: "G-02ESWQPDVR"
+    apiKey: "AIzaSyB-2R-cqvfQU71UByBLYwdqX8-hIZek1Gk",
+    authDomain: "smartshopper-b4c7c.firebaseapp.com",
+    projectId: "smartshopper-b4c7c",
+    storageBucket: "smartshopper-b4c7c.appspot.com",
+    messagingSenderId: "356186768941",
+    appId: "1:356186768941:web:0f5d87abaf4f57e2819aa4",
+    measurementId: "G-02ESWQPDVR"
 };
 
 // Initialize Firebase
@@ -20,25 +21,22 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const databaseReference = ref(database);
 
-generateFakeResearchArticle();
 
-function generateFakeResearchArticle() {
+function storeQuery(searchQuery) {
 
-    const article = {
+
+    const query = {
         id: '',
-        title: 'This is a blog title',
-        body: 'This is an intresting blog body',
-        date: '2rd June 2024',
-        by: 'Gerryshom Nyanusi',
-        image_url: 'https://img.freepik.com/free-vector/party-crowd-purple-stars-background_1048-7508.jpg?t=st=1719217639~exp=1719221239~hmac=3d17f9a1def33457ef60103ce9100ee11775ce5d2d6468d496dd9348749c8cd9&w=826'
+        body: searchQuery,
+        time: new Date().toISOString()
     };
 
-    const pushRef = push(ref(database, 'research/'));
+    const pushRef = push(ref(database, 'queries/'));
 
-    article.id = pushRef.key;
+    query.id = pushRef.key;
 
-    set(pushRef, article).then(() => {
-        console.log('Article saved');
+    set(pushRef, query).then(() => {
+        console.log('Query saved');
     }).catch((error) => {
         console.log(error);
     })
@@ -86,6 +84,9 @@ function beginSearch() {
     const searchInput = document.querySelector('.search-input');
 
     searchBtn.addEventListener('click', () => {
+
+        storeQuery(searchInput.value);
+
         spinner.style.display = 'flex';
         sectionHeader.style.display = 'block';
         errorContainer.style.display = 'none';
@@ -102,7 +103,7 @@ function beginSearch() {
             showError();
             spinner.style.display = 'none';
         }, 2000);
-        
+
     })
 }
 
